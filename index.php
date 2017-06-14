@@ -9,7 +9,9 @@ define('CHARM', dirname(__FILE__) );
 define('SYSTEM', CHARM . '\system');
 define('APP', CHARM . '\app');
 define('ENVIRONMENT', 'development');
+define('CONTROLLER', '\app\Controller\\');
 
+define('APPEXT', '.php');
 switch (ENVIRONMENT)
 {
 	case 'development':
@@ -36,9 +38,9 @@ switch (ENVIRONMENT)
 		exit(1); // EXIT_ERROR
 }
 
-include SYSTEM . '\common\function.php';
-include SYSTEM . '\core\charm.php';
-
-\charm\Charm::run();
+include SYSTEM . '\common\Function.php';
+include SYSTEM . '\core\Charm.php';
+spl_autoload_register('\system\core\Charm::load');
+\system\core\Charm::run();
 
  ?>
