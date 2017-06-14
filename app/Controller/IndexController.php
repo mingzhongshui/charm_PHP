@@ -5,6 +5,6 @@ class IndexController
 {
 	public function index()
 	{
-		echo '<h2>Hello World！<h2>';
+		echo '<h2>Hello Charm_PHP<h2>';
 	}
 }
