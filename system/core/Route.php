@@ -6,25 +6,14 @@ class Route
 {
 	public $strController;
 	public $strAction;
+
+
 	public function __construct() 
 	{
-		$strDocuPath = $_SERVER['DOCUMENT_ROOT'];
-		$strFilePath = __FILE__; // 获取当前文件路径
-		$strUri      = $_SERVER['REQUEST_URI'];
-		$strFilePath = str_replace($strDocuPath, '', $strFilePath);  
+		
+		$strUri = $this->_get_request_uri();
 
-	   	$arrFilePath   = explode(DIRECTORY_SEPARATOR, $strFilePath);
-	   	$countFilePath = count($arrFilePath);
-
-	   	for ($i = 0; $i < $countFilePath; $i++) {
-	        $p = $arrFilePath[$i];
-	        if ($p) {
-	            $strUri = preg_replace('/^\/'.$p.'\//', '/', $strUri, 1);
-	         }
-	     }
-      
-     	$strUri = preg_replace('/^\//', '', $strUri, 1);
-     	if($strUri) {
+     	if($strUri && $strUri != '/') {
      		$arrUri = explode('/', trim($strUri, '/'));
      		if( !empty( $arrUri[0] ) ) {
 				$this->strController = $arrUri[0];
@@ -49,4 +38,28 @@ class Route
      	}
 		
 	}	
+
+	/**
+	 * 获取uri
+	 * @return [type] [description]
+	 */
+	protected function _get_request_uri()
+	{
+		if ( ! isset($_SERVER['REQUEST_URI'], $_SERVER['SCRIPT_NAME']))
+		{
+			return FALSE;
+		}
+		$uri   = parse_url('http://dummy'.$_SERVER['REQUEST_URI']);
+		$query = isset($uri['query']) ? $uri['query'] : '';
+		$uri   = isset($uri['path']) ? $uri['path'] : '';
+		if (isset($_SERVER['SCRIPT_NAME'][0])) {
+			if (strpos($uri, $_SERVER['SCRIPT_NAME']) === 0) {
+				$uri = (string) substr($uri, strlen($_SERVER['SCRIPT_NAME']));
+			} elseif (strpos($uri, dirname($_SERVER['SCRIPT_NAME'])) === 0) {
+				$uri = (string) substr($uri, strlen(dirname($_SERVER['SCRIPT_NAME'])));
+			}
+		}
+		parse_str($_SERVER['QUERY_STRING'], $_GET);
+		return $uri;
+	}
 }
