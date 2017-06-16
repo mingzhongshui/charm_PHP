@@ -8,14 +8,25 @@ class Route
 	public $strAction;
 	public function __construct() 
 	{
-		// xxx.com/index/index/id/1
-		// 1、隐藏index.php
-		// 2、获取url参数部分
-		// 3、返回对应控制器和方法
-		
-		if( isset( $_SERVER['REQUEST_URI'] ) && $_SERVER['REQUEST_URI'] != '/' ) {
-			$arrUri = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
-			if( !empty( $arrUri[0] ) ) {
+		$strDocuPath = $_SERVER['DOCUMENT_ROOT'];
+		$strFilePath = __FILE__; // 获取当前文件路径
+		$strUri      = $_SERVER['REQUEST_URI'];
+		$strFilePath = str_replace($strDocuPath, '', $strFilePath);  
+
+	   	$arrFilePath   = explode(DIRECTORY_SEPARATOR, $strFilePath);
+	   	$countFilePath = count($arrFilePath);
+
+	   	for ($i = 0; $i < $countFilePath; $i++) {
+	        $p = $arrFilePath[$i];
+	        if ($p) {
+	            $strUri = preg_replace('/^\/'.$p.'\//', '/', $strUri, 1);
+	         }
+	     }
+      
+     	$strUri = preg_replace('/^\//', '', $strUri, 1);
+     	if($strUri) {
+     		$arrUri = explode('/', trim($strUri, '/'));
+     		if( !empty( $arrUri[0] ) ) {
 				$this->strController = $arrUri[0];
 			}
 			if( !empty( $arrUri[1] ) ) {
@@ -31,11 +42,11 @@ class Route
 				$_GET[$arrUri[$i]] = isset($arrUri[$i + 1]) ? $arrUri[$i + 1] : '';
 				$i = $i + 2;
 			}
-		}else {
-			$this->strController = 'index';
-			$this->strAction = 'index';
-		}
 
+     	}else {
+     		$this->strController = 'index';
+			$this->strAction     = 'index';
+     	}
 		
 	}	
 }
