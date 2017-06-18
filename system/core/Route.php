@@ -2,6 +2,9 @@
 
 namespace system\core;
 use system\core\Config;
+/**
+ * 路由类
+ */
 class Route
 {
 	public $strController;

@@ -1,10 +1,20 @@
 <?php 
 namespace system\core;
 
+/**
+ * 配置类
+ */
 class Config
 {
 
 	static public $config = [];
+	/**
+	 * 获取单个配置项值
+	 * @param  strkey  $name 单个配置项名
+	 * @param  strpath $file 配置文件名
+	 * @return string       单个配置项值
+	 * date(2017.6.18)
+	 */
 	static public function get($name, $file) 
 	{
 		/**
@@ -32,6 +42,12 @@ class Config
 		
 	}
 
+	/**
+	 * 获取全部配置项
+	 * @param  strpath $file 配置文件名
+	 * @return array       配置项
+	 * date(2017.6.18 night)
+	 */
 	static public function getAll($file)
 	{	
 		$strConfigPath = SYSTEM . '\config\\' . $file . APPEXT;

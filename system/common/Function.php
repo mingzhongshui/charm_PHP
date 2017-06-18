@@ -1,5 +1,11 @@
 <?php 
-
+	
+	/**
+	 * 打印函数
+	 * @param  array/string/int  $arr  打印变量
+	 * @param  boolean 			 $flag 是否终止标识符
+	 * @return string        
+	 */
 	function p($arr, $flag = TRUE) 
 	{
 		echo "<pre>";
