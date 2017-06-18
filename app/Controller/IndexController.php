@@ -1,10 +1,17 @@
 <?php 
 namespace app\Controller;
-
-class IndexController
+use system\core\Model;
+use system\core\Charm;
+class IndexController extends Charm
 {
 	public function index()
 	{
-		echo '<h2>Hello Charm_PHP<h2>';
+
+		$model = new Model();
+
+		$res = $model->query('select * from user');
+		// p($res->fetchAll());
+		// 
+		$this->view('index', ['title' => '测试标题', 'content' => '我是测试内容啊喂']);
 	}
 }
