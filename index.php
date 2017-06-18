@@ -1,8 +1,6 @@
 <?php 
 /**
- * charm_PHP
- *
- * 
+ * charm_PHP 
  */
 
 define('CHARM', dirname(__FILE__) );
