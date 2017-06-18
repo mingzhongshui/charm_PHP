@@ -1,7 +1,7 @@
 <?php 
 
 namespace system\core;
-
+use system\core\Config;
 class Route
 {
 	public $strController;
@@ -21,7 +21,7 @@ class Route
 			if( !empty( $arrUri[1] ) ) {
 				$this->strAction = $arrUri[1];
 			}else {
-				$this->strAction = 'index';
+				$this->strAction = Config::get('DEFAULT_ACTION', 'route');
 			}
 			$intCount = count($arrUri);
 			// 释放控制器和方法
@@ -33,8 +33,8 @@ class Route
 			}
 
      	}else {
-     		$this->strController = 'index';
-			$this->strAction     = 'index';
+     		$this->strController = Config::get('DEFAULT_CONTROLLER', 'route');
+			$this->strAction     = Config::get('DEFAULT_ACTION', 'route');
      	}
 		
 	}	
