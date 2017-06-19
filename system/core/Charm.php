@@ -1,6 +1,6 @@
 <?php 
 namespace system\core;
-
+use system\core\Log;
 /**
  * Charm 核心类
  */
@@ -16,7 +16,8 @@ class Charm
 	{
 		// 实例化路由
 		$objRoute = new \system\core\Route();
-
+		// Log::init();
+		// Log::log('test');
 		// 取得控制器和方法名
 		$strController = ucfirst($objRoute->strController) . 'Controller';
 		$strAction     = $objRoute->strAction;

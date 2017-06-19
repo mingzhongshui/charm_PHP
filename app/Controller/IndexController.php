@@ -15,7 +15,7 @@ class IndexController extends Controller
 		// $model = new Model();
 		// $route_config = Config::get('DEFAULT_CONTROLLER', 'route');
 		// $route_action = Config::get('DEFAULT_ACTION', 'route');
-		// p($route_config);ss
+		// p($route_config);
 
 		// p($route_action);
 		// $res = $model->query('select * from user');
