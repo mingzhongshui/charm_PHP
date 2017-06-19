@@ -19,7 +19,6 @@ class file
 		$strSaveFileName = $pathSaveFloder . '\\' . $file . '.log';
 		$jsonSaveContent = date('Y-m-d H:i:s') . '   ' . json_encode($data);
 		if(is_dir($pathSaveFloder)) {
-			p($jsonSaveContent);
 			file_put_contents($strSaveFileName, $jsonSaveContent . PHP_EOL, FILE_APPEND);
 		}else {
 			mkdir($pathSaveFloder, 0755);

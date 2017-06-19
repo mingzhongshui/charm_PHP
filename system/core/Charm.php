@@ -16,7 +16,7 @@ class Charm
 	{
 		// 实例化路由
 		$objRoute = new \system\core\Route();
-		// Log::init();
+		Log::init();
 		// Log::log('test');
 		// 取得控制器和方法名
 		$strController = ucfirst($objRoute->strController) . 'Controller';
@@ -29,6 +29,7 @@ class Charm
 			require_once $strCtrlFile;
 			$objClass = new $strClass();
 			$objClass->$strAction();
+			Log::log('Controller:' . $strClass . '  action:' .  $strAction);
 		}else {
 			throw new \Exception("找不到控制器 -- " . $strCtrlFile);
 		}

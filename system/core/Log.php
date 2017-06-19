@@ -15,8 +15,8 @@ class Log
 
 	}
 
-	static public function log($name, $file = 'log')
+	static public function log($data, $file = 'log')
 	{
-		self::$class->write('test', $file);
+		self::$class->write($data, $file);
 	}
 }
