@@ -10,9 +10,18 @@ define('ENVIRONMENT', 'development');
 define('CONTROLLER', '\app\Controller\\');
 
 define('APPEXT', '.php');
+
+include "vendor/autoload.php";
 switch (ENVIRONMENT)
 {
 	case 'development':
+		$whoops     = new \Whoops\Run;
+		$errorTitle = '哎呦！出现一个小bug！~';
+		$options    = new \Whoops\Handler\PrettyPageHandler;
+		$options->setPageTitle($errorTitle);
+		$whoops->pushHandler($options);
+		$whoops->register();
+		
 		error_reporting(-1);
 		ini_set('display_errors', 1);
 	break;
