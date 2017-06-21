@@ -8,14 +8,23 @@ class Charm
 {	
 
 	private static $arrClassMap = []; // 加载的类记录数组
+	// private static $arrCommonMap   = [];
+	// public function __construct()
+	// {
+		
+		
+	// }
 
 	/**
 	 * 框架运行
 	 */
 	static public function run()
 	{
+		// $this->load_common();
+		self::load_common();
 		// 实例化路由
 		$objRoute = new \system\core\Route();
+
 		Log::init();
 		// Log::log('test');
 		// 取得控制器和方法名
@@ -54,6 +63,20 @@ class Charm
 		}
 	}	
 
-	
+	static public function load_common()
+	{
+		$pathCommon = CHARM . '\system\common';
+		if(is_dir($pathCommon)) {
+			$handler = opendir(CHARM . '\system\common');
+			while( ($filename = readdir($handler)) !== false ) {
+		      	if($filename != "." && $filename != ".."){
+		          	include_once $pathCommon . '\\' . $filename;
+		      }
+			}
+
+		}
+	}
+
+
 
 }

@@ -21,6 +21,7 @@ class IndexController extends Controller
 		// $res = $model->query('select * from user');
 		// p($res->fetchAll());
 		// 
-		$this->view('index', ['title' => '测试标题', 'content' => '我是测试内容啊喂']);
+		// echo base_url();
+		view('index', ['title' => '测试标题', 'content' => '我是测试内容啊喂']);
 	}
 }

@@ -1,5 +1,10 @@
 <?php 
-
+	
+	// 获得当前网页的域名
+	function base_url() 
+	{
+		 
+	}
 	/**
 	 * 上传图片处理
 	 * @param  string $targetPath 相对路径
@@ -46,10 +51,6 @@
 			echo '文件类型不匹配哈！';
 			return FALSE;
 		}
-	}
-
-	function base_url() {
-		
 	}
 
 	/**
@@ -113,4 +114,24 @@
 		}
 		return "<link rel=\"stylesheet\" type=\"text/css\" href=\"{$css}\" media=\"all\" />";
 	}
+
+	/**
+	 * 加载视图
+	 * @param  string $file_path 文件路径
+	 * @param  array  $data      值
+	 */
+	function view($file_path, $data) 
+	{
+		$file_path = VIEWS . $file_path . APPEXT;
+
+		if(is_array($data)) extract($data);
+		if(is_file($file_path)) include_once $file_path;
+	}
+
+	function post()
+	{
+
+
+	}
+
 
