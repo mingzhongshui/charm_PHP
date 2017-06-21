@@ -22,8 +22,8 @@ switch (ENVIRONMENT)
 		$whoops     = new \Whoops\Run;
 		$errorTitle = '哎呦！出现一个小bug！~';
 		$options    = new \Whoops\Handler\PrettyPageHandler;
-		$options->setPageTitle($errorTitle);
-		$whoops->pushHandler($options);
+		$options->setPageTitle($errorTitle); // 设置错误标题
+		$whoops->pushHandler($options); 
 		$whoops->register();
 
 		error_reporting(-1);
@@ -53,7 +53,6 @@ if(is_dir(APP .'\views')) {
 	chmod(APP .'\views', 755);
 	define('VIEWS', APP . '\views\\');
 }
-// dump($_SERVER);exit;
 include SYSTEM . '\common\Function.php';
 include SYSTEM . '\core\Charm.php';
 spl_autoload_register('\system\core\Charm::load');
