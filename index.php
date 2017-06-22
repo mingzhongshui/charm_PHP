@@ -2,9 +2,11 @@
 /**
  * charm_PHP 
  */
+date_default_timezone_set('PRC');
 
 define('CHARM', dirname(__FILE__) );
 define('SYSTEM', CHARM . '\system');
+define('CORE', CHARM . '\system\core');
 define('APP', CHARM . '\app');
 define('ENVIRONMENT', 'development');
 define('CONTROLLER', '\app\Controller\\');

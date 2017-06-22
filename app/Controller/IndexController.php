@@ -12,6 +12,7 @@ class IndexController extends Controller
 	public function index()
 	{
 
+		post();
 		// $model = new Model();
 		// $route_config = Config::get('DEFAULT_CONTROLLER', 'route');
 		// $route_action = Config::get('DEFAULT_ACTION', 'route');

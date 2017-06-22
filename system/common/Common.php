@@ -128,10 +128,132 @@
 		if(is_file($file_path)) include_once $file_path;
 	}
 
-	function post()
+	// function &load_class($class)
+	// {
+	// 	static $arrClass;
+
+	// 	if($arrClass[$class])
+	// 	foreach (array(CORE, APP . 'library') as $floder) {
+	// 		if(file_exists($floder)) {
+	// 			$classPath = $value . '\\' . $floder . '\\' . $class . APPEXT;
+	// 			if(file_exists($classPath)) {
+	// 				require_once $classPath;
+	// 				$objClass = new $class();
+	// 				$arrClass[$class] = $objClass;
+	// 				return $class;
+	// 			}
+	// 		}
+	// 	}
+	// }
+
+
+// 	function &load_class($class, $directory = 'core', $param = NULL)
+// 	{
+// 		static $_classes = array();
+
+// 		if (isset($_classes[$class]))
+// 		{
+// 			return $_classes[$class];
+// 		}
+
+// 		$flag = FALSE;
+// 		foreach (array(SYSTEM, APP) as $path)
+// 		{
+// 			$classPath = $path . '\\' . $directory . '\\' . $class. APPEXT;
+
+			
+// 			if (file_exists($classPath))
+// 			{
+				
+// 				$flag = TRUE;
+// 				$ss = require_once $classPath;
+// 				dump($ss);
+// 				break;
+// 			}
+// 		}
+
+// 		dump($classPath);
+// // exit;
+// 		$route = new \system\core\Route();
+// 		dump($route);exit;
+// 		// exit;
+// 		// // Did we find the class?
+// 		if ($flag === FALSE)
+// 		{
+// 			// Note: We use exit() rather than show_error() in order to avoid a
+// 			// self-referencing loop with the Exceptions class
+// 			// set_status_header(503);
+// 			echo 'Unable to locate the specified class: '.$class.'.php';
+// 			exit(5); // EXIT_UNK_CLASS
+// 		}
+
+// 		dump(class_exists($class , FALSE));exit;
+// 		$_classes[$class] = isset($param)
+// 			? new $class($param)
+// 			: new $class();
+// 		return $_classes[$class];
+// 	}
+
+    /**
+     * 获取post数据
+     * @param  string $name post键
+     * @return val/array    post值
+     */
+	function post($name = '')
 	{
 
+		// $se =& load_class('Route');
 
+		// p($se);exit;
+		$security = new \system\core\Security();
+		// $security->isEscape(1);
+		if($name) {
+			return $security->isEscape($_POST[$name]);
+		}else {
+			$arrPost = [];
+			foreach ($_POST as $key => $value) {
+				$arrPost[$key] = $security->isEscape($value);
+			}
+			return $arrPost;
+		}
 	}
 
+	/**
+     * 获取get数据
+     * @param  string $name get键
+     * @return val/array    get值
+     */
+	function get($name = '')
+	{
+		if($name) {
+			return isEscape($_GET[$name]);
+		}else {
+			$arrGET = [];
+			foreach ($_GET as $key => $value) {
+				$arrGET[$key] = isEscape($value);
+			}
+			return $arrGET;
+		}
+	}
+
+	function request($name = '', $type='get') {
+		$type = $type ? $type : strtolower(trim($type));
+		$arrData = [];
+		switch ($type) {
+			case 'get':
+				$arrData = get($name);
+				break;
+			case 'post':
+				$arrData = post($name);
+				break;
+			case 'request':
+				$arrData = $_REQUEST;
+				break;
+			default:
+				$arrData = FALSE;
+				break;
+		}
+
+		return $arrData;
+	}
 
