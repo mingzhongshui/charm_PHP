@@ -20,13 +20,11 @@ class Charm
 	 */
 	static public function run()
 	{
-		// $this->load_common();
-		self::load_common();
+		// self::load_common();
 		// 实例化路由
 		$objRoute = new \system\core\Route();
 
 		Log::init();
-		// Log::log('test');
 		// 取得控制器和方法名
 		$strController = ucfirst($objRoute->strController) . 'Controller';
 		$strAction     = $objRoute->strAction;
