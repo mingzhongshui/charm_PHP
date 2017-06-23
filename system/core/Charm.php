@@ -63,19 +63,19 @@ class Charm
 		}
 	}	
 
-	static public function load_common()
-	{
-		$pathCommon = CHARM . '\system\common';
-		if(is_dir($pathCommon)) {
-			$handler = opendir(CHARM . '\system\common');
-			while( ($filename = readdir($handler)) !== false ) {
-		      	if($filename != "." && $filename != ".."){
-		          	include_once $pathCommon . '\\' . $filename;
-		      }
-			}
+	// static public function load_common()
+	// {
+	// 	$pathCommon = CHARM . '\system\common';
+	// 	if(is_dir($pathCommon)) {
+	// 		$handler = opendir(CHARM . '\system\common');
+	// 		while( ($filename = readdir($handler)) !== false ) {
+	// 	      	if($filename != "." && $filename != ".."){
+	// 	          	include_once $pathCommon . '\\' . $filename;
+	// 	      }
+	// 		}
 
-		}
-	}
+	// 	}
+	// }
 
 
 

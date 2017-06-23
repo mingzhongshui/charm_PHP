@@ -55,7 +55,7 @@ if(is_dir(APP .'\views')) {
 	chmod(APP .'\views', 755);
 	define('VIEWS', APP . '\views\\');
 }
-include SYSTEM . '\common\Function.php';
+include SYSTEM . '\core\Common.php';
 include SYSTEM . '\core\Charm.php';
 spl_autoload_register('\system\core\Charm::load');
 \system\core\Charm::run();
