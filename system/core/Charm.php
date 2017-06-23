@@ -56,7 +56,7 @@ class Charm
 				require_once $strClassPath;
 				self::$arrClassMap[$strClass] = $strClass;
 			}else {
-				return FALSE;
+				throw new \Exception("找不到类库 -- " . $strCtrlFile);
 			}
 		}
 	}	
