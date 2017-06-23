@@ -8,13 +8,7 @@ class Charm
 {	
 
 	private static $arrClassMap = []; // 加载的类记录数组
-	// private static $arrCommonMap   = [];
-	// public function __construct()
-	// {
-		
-		
-	// }
-
+	
 	/**
 	 * 框架运行
 	 */
@@ -56,7 +50,7 @@ class Charm
 				require_once $strClassPath;
 				self::$arrClassMap[$strClass] = $strClass;
 			}else {
-				throw new \Exception("找不到类库 -- " . $strCtrlFile);
+				throw new \Exception("找不到类 -- " . $strClass);
 			}
 		}
 	}	
@@ -71,10 +65,7 @@ class Charm
 	// 	          	include_once $pathCommon . '\\' . $filename;
 	// 	      }
 	// 		}
-
 	// 	}
 	// }
-
-
 
 }
