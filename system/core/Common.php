@@ -24,12 +24,19 @@
 		if($flag == FALSE) exit;
 	}
 
-	
-	// 获得当前网页的域名
-	function base_url() 
+	/**
+	 * 获得当前项目的网址
+	 * @param  string $uri uri
+	 * @return string      url
+	 */
+	function base_url($uri = '') 
 	{
-		 
+		 if (isset($_SERVER['SCRIPT_NAME'][0])) {
+		 	$urlFloder = dirname($_SERVER['SCRIPT_NAME']);
+		 	return  $_SERVER['REQUEST_SCHEME'] . '://' .  $_SERVER['HTTP_HOST'] . $urlFloder . '/' .  $uri;
+		 }
 	}
+
 	/**
 	 * 上传图片处理
 	 * @param  string $targetPath 相对路径
@@ -115,13 +122,11 @@
 	 * @param string $js JS文件
 	 * @return string
 	 */
-	function js( $js ) {
+	function js( $js , $js_path = 'js', $resource = 'resource') {
 		$is_relative = ( strpos( $js, 'http' ) === FALSE );
-		if ( $is_relative ) $js = base_url( $js );
+		if ( $is_relative ) $js = base_url( $resource . '/' . $js_path . '/' . $js);
 		return "<script type=\"text/javascript\" src=\"{$js}\"></script>";
 	}
-
-
 
 	/**
 	 * 引用CSS
@@ -129,13 +134,12 @@
 	 * @param string $theme 主题
 	 * @return string
 	 */
-	function css( $css, $theme = '' ) {
+	function css( $css, $css_path = 'css', $resource = 'resource' ) {
 		$is_relative = ( strpos( $css, 'http' ) === FALSE );
 		// CSS
 		// 当前主题
 		if ( $is_relative ) {
-			$current_theme = ( $theme ) ? $theme : config_item( 'theme' );
-			$css = base_url( "theme/{$current_theme}/{$css}" );
+			$css = base_url($resource . '/' . $css_path . '/' . $css);
 		}
 		return "<link rel=\"stylesheet\" type=\"text/css\" href=\"{$css}\" media=\"all\" />";
 	}
@@ -172,52 +176,52 @@
 	// }
 
 
-// 	function &load_class($class, $directory = 'core', $param = NULL)
-// 	{
-// 		static $_classes = array();
+	function &load_class($class, $directory = 'core', $param = NULL)
+	{
+		static $_classes = array();
 
-// 		if (isset($_classes[$class]))
-// 		{
-// 			return $_classes[$class];
-// 		}
+		if (isset($_classes[$class]))
+		{
+			return $_classes[$class];
+		}
 
-// 		$flag = FALSE;
-// 		foreach (array(SYSTEM, APP) as $path)
-// 		{
-// 			$classPath = $path . '\\' . $directory . '\\' . $class. APPEXT;
+		$flag = FALSE;
+		foreach (array(SYSTEM, APP) as $path)
+		{
+			$classPath = $path . '\\' . $directory . '\\' . $class. APPEXT;
 
 			
-// 			if (file_exists($classPath))
-// 			{
+			if (file_exists($classPath))
+			{
 				
-// 				$flag = TRUE;
-// 				$ss = require_once $classPath;
-// 				dump($ss);
-// 				break;
-// 			}
-// 		}
+				$flag = TRUE;
+				$ss = require_once $classPath;
+				dump($ss);
+				break;
+			}
+		}
+		
+		// dump($classPath);
+// exit;
+		// $route = new \system\core\Route();
+		// dump($route);exit;
+		// exit;
+		// // Did we find the class?
+		if ($flag === FALSE)
+		{
+			// Note: We use exit() rather than show_error() in order to avoid a
+			// self-referencing loop with the Exceptions class
+			// set_status_header(503);
+			echo 'Unable to locate the specified class: '.$class.'.php';
+			exit(5); // EXIT_UNK_CLASS
+		}
 
-// 		dump($classPath);
-// // exit;
-// 		$route = new \system\core\Route();
-// 		dump($route);exit;
-// 		// exit;
-// 		// // Did we find the class?
-// 		if ($flag === FALSE)
-// 		{
-// 			// Note: We use exit() rather than show_error() in order to avoid a
-// 			// self-referencing loop with the Exceptions class
-// 			// set_status_header(503);
-// 			echo 'Unable to locate the specified class: '.$class.'.php';
-// 			exit(5); // EXIT_UNK_CLASS
-// 		}
-
-// 		dump(class_exists($class , FALSE));exit;
-// 		$_classes[$class] = isset($param)
-// 			? new $class($param)
-// 			: new $class();
-// 		return $_classes[$class];
-// 	}
+		// dump(class_exists($class , FALSE));exit;
+		$_classes[$class] = isset($param)
+			? new $class($param)
+			: new $class();
+		return $_classes[$class];
+	}
 
     /**
      * 获取post数据
@@ -228,6 +232,8 @@
 	{
 
 		// $se =& load_class('Route');
+
+		// dump($se);
 		$security = new \system\core\Security();
 		if($name) {
 			return $security->isEscape($_POST[$name]);

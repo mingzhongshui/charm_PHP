@@ -12,7 +12,9 @@ class IndexController extends Controller
 	public function index()
 	{
 
-		post();
+		// post();
+		// echo base_url('index/index').'<br>';
+		// echo js('css.css');
 		// $model = new Model();
 		// $route_config = Config::get('DEFAULT_CONTROLLER', 'route');
 		// $route_action = Config::get('DEFAULT_ACTION', 'route');

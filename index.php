@@ -57,7 +57,7 @@ if(is_dir(APP .'\views')) {
 }
 include SYSTEM . '\core\Common.php';
 include SYSTEM . '\core\Charm.php';
-spl_autoload_register('\system\core\Charm::load');
-\system\core\Charm::run();
 
- ?>
+spl_autoload_register('\system\core\Charm::load');
+
+\system\core\Charm::run();

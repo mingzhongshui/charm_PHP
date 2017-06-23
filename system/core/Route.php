@@ -52,8 +52,7 @@ class Route
 		{
 			return FALSE;
 		}
-		$uri   = parse_url('http://dummy'.$_SERVER['REQUEST_URI']);
-		$query = isset($uri['query']) ? $uri['query'] : '';
+		$uri   = parse_url($_SERVER['REQUEST_URI']);
 		$uri   = isset($uri['path']) ? $uri['path'] : '';
 		if (isset($_SERVER['SCRIPT_NAME'][0])) {
 			if (strpos($uri, $_SERVER['SCRIPT_NAME']) === 0) {

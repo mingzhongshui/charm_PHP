@@ -14,7 +14,6 @@ class Charm
 	 */
 	static public function run()
 	{
-		// self::load_common();
 		// 实例化路由
 		$objRoute = new \system\core\Route();
 
