@@ -7,12 +7,11 @@
 // 	'PASSWORD' => ''
 // ];
 
-// return [
-// 	'database_type' => 'mysql',
-// 	'database_name' => 'zjm_pro',
-// 	'server'        => 'localhost',
-// 	'username'      => 'root',
-// 	'password'      => '',
-// 	'charset'       => 'utf8',
-
-// ];
+return [
+	'database_type' => 'mysql',
+	'database_name' => 'zjm_pro',
+	'server'        => 'localhost',
+	'username'      => 'root',
+	'password'      => '',
+	'charset'       => 'utf8',
+];
