@@ -12,7 +12,7 @@ define('ENVIRONMENT', 'development');
 define('CONTROLLER', '\app\Controller\\');
 
 define('APPEXT', '.php');
-
+define('VIEWS', APP . '\views\\');
 include "vendor/autoload.php";
 
 /**
@@ -48,13 +48,7 @@ switch (ENVIRONMENT)
 		exit(1); // EXIT_ERROR
 }
 
-if(is_dir(APP .'\views')) {
-	define('VIEWS', APP . '\views\\');
-}else {
-	mkdir(APP .'\views');
-	chmod(APP .'\views', 755);
-	define('VIEWS', APP . '\views\\');
-}
+
 include SYSTEM . '\core\Common.php';
 include SYSTEM . '\core\Charm.php';
 
