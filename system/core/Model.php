@@ -1,7 +1,7 @@
 <?php 
 namespace system\core;
 use system\core\Config;
-use system\core\Medoo;
+use system\core\lib\Medoo;
 /**
  * 模型类
  * date(2017.6.18)

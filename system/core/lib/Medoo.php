@@ -8,7 +8,7 @@
  * Released under the MIT license
  */
 
-namespace system\core;
+namespace system\core\lib;
 
 use PDO;
 use Exception;
