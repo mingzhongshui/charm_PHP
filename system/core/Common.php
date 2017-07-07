@@ -33,6 +33,8 @@
 	{
 		 if (isset($_SERVER['SCRIPT_NAME'][0])) {
 		 	$urlFloder = dirname($_SERVER['SCRIPT_NAME']);
+		 	$urlFloder = str_replace('\\', '/', $urlFloder);
+		 	
 		 	return  $_SERVER['REQUEST_SCHEME'] . '://' .  $_SERVER['HTTP_HOST'] . $urlFloder . '/' .  $uri;
 		 }
 	}
@@ -149,12 +151,16 @@
 	 * @param  string $file_path 文件路径
 	 * @param  array  $data      值
 	 */
-	function view($file_path, $data) 
+	function view($file_path, $data = '') 
 	{
 		$file_path = VIEWS . $file_path . APPEXT;
 
 		if(is_array($data)) extract($data);
-		if(is_file($file_path)) include_once $file_path;
+		if(is_file($file_path)) {
+			include_once $file_path;
+		}else {
+			throw new \Exception("找不到文件 -- " . $file_path);
+		}
 	}
 
     /**
