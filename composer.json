@@ -1,0 +1,13 @@
+{
+	"name": "Charm_PHP/Charm_PHP",
+    "description": "The Charm_PHP Framework.",
+    "keywords": ["framework", "Charm_PHP", "PHP"],
+    "type": "Framework",
+    "require":{
+    	"php":">= 5.5.0",
+    	"filp/whoops":"*",
+    	"symfony/var-dumper":"*",
+    	"catfan/medoo":"*",
+        "mobiledetect/mobiledetectlib":"^2.8"
+    }
+}
