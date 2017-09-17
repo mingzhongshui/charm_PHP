@@ -1,7 +1,8 @@
 <?php 
-
 namespace system\core;
+
 use system\core\Config;
+
 /**
  * 路由类
  */

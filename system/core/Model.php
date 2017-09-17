@@ -1,5 +1,6 @@
 <?php 
 namespace system\core;
+
 use Medoo\Medoo;
 use system\core\Config;
 
@@ -11,12 +12,15 @@ class Model extends Medoo
 {
 	public $_model; 
 	protected $pk;
+
 	public function __construct()
 	{
 		$arrDbMsg = Config::getAll('database');
-		parent::__construct($arrDbMsg);
-		if(empty($this->_model)) {
-			$this->_model = new Medoo();
+		if(!empty($arrDbMsg['database_name'])) {
+			parent::__construct($arrDbMsg);
+			if(empty($this->_model)) {
+				$this->_model = new Medoo();
+			}
 		}
 	}
 

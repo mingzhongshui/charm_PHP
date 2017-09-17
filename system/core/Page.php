@@ -1,4 +1,5 @@
 <?php
+namespace system\core;
 
 /* * *********************************************
  * @类名:   page
@@ -9,8 +10,6 @@
  * @功能:   分页实现
  * @作者:   宋海阁
  */
-namespace system\core;
-
 class Page 
 {
 

@@ -1,6 +1,8 @@
 <?php 
 namespace system\core;
+
 use system\core\Log;
+
 /**
  * Charm 核心类
  */
