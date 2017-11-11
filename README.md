@@ -22,7 +22,7 @@
 			Page.php     -> 分页类
 			Route.php    -> 路由类
 			Security.php -> 验证类
-			Session.php	 -> session类
+			Session.php  -> session类
 		dirves     -> 驱动文件目录
 	vendor  -> PHP组件
 
@@ -46,14 +46,14 @@ Use: `$postData = post();  OR $name = post('name');`
 
 ### get($key) ###
 Use: `$getData = get();  OR $name = get('name');`
-### request($key, $type) ###
+### request($key, $type = 'get') ###
 Use:
  
 	$getName     = request('name', 'get');
 	$posttName   = request('name', 'POST');`
 	$requestName = request('name', 'request');`
 
-### ajaxReturn($status, $msg) ###
+### ajaxReturn($status, $msg = '') ###
 
 Use:
 
