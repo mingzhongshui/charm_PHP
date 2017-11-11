@@ -1,30 +1,30 @@
 # charm_pj
 ## 介绍 ##
-一个简单的MVC框架，框架中实现了C和V层，M层使用composer的PHP组件——[Medoo](https://packagist.org/packages/catfan/medoo "medoo")，实现了一些简单的设计模式，单一入口和自动加载。
+一个简单的MVC框架，框架中实现了C和V层，M层使用composer的PHP组件——[Medoo](https://packagist.org/packages/catfan/medoo "medoo")，实现了一些简单的设计模式，单一入口、自动加载。
 
 本框架遵循[PSR规范](https://www.cxiansheng.cn/server/293 "PSR")，使用[命名空间](http://www.php.net/manual/zh/language.namespaces.rationale.php "namespace")来规范类于类之间的互相合作；
 
 ## 目录 ##
-    app
-        controller ->控制器目录
-    	core       ->公共、核心文件目录
-		views      ->视图目录
-    resource  ->资源目录(js、images、css等)
+    app -> 应用目录
+        controller -> 控制器目录
+    	core       -> 公共、核心文件目录
+		views      -> 视图目录
+    resource  -> 资源目录(js、images、css等)
     system
-		config	   ->框架配置文件目录
-		core	   ->框架核心文件目录
-			Charm.php    ->核心文件
-			Common.php   ->公共方法
-			Cofig.php    ->配置类
-			Core.php     ->核心文件
-			Log.php      ->日志类
-			Model.php    ->数据库类
-			Page.php     ->分页类
-			Route.php    ->路由类
-			Security.php ->验证类
-			Session.php	 ->session类
-		dirves     ->驱动文件目录
-	vendor  ->PHP组件
+		config	   -> 框架配置文件目录
+		core	   -> 框架核心文件目录
+			Charm.php    -> 核心文件
+			Common.php   -> 公共方法
+			Cofig.php    -> 配置类
+			Core.php     -> 核心文件
+			Log.php      -> 日志类
+			Model.php    -> 数据库类
+			Page.php     -> 分页类
+			Route.php    -> 路由类
+			Security.php -> 验证类
+			Session.php	 -> session类
+		dirves     -> 驱动文件目录
+	vendor  -> PHP组件
 
 ## 初始化 ##
 
