@@ -135,15 +135,15 @@
 	 * @param string $theme 主题
 	 * @return string
 	 */
-	function css( $css, $css_path = 'css', $resource = 'resource' ) {
-		$is_relative = ( strpos( $css, 'http' ) === FALSE );
+	function css( $cssName, $cssPath = 'css', $resource = 'resource' ) {
+		$is_relative = ( strpos( $cssName, 'http' ) === FALSE );
 		// CSS
 		// 当前主题
 		if ( $is_relative ) {
-			$css = base_url($resource . '/' . $css_path . '/' . $css);
+			$cssName = base_url($resource . '/' . $cssPath . '/' . $cssName);
 		}
 		// dump($css);exit;
-		return "<link rel=\"stylesheet\" type=\"text/css\" href=\"{$css}\" media=\"all\" />";
+		return "<link rel=\"stylesheet\" type=\"text/css\" href=\"{$cssName}\" media=\"all\" />";
 	}
 
 	/**
