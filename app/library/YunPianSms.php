@@ -9,7 +9,7 @@ use \Yunpian\Sdk\YunpianClient;
 class YunPianSms
 {
 
-	private static $_apiKey = '7faf9f11d8bd5f7d8e1339009be21aa9'; 
+	private static $_apiKey = '7faf9f11d8bd5f7d8e1ds339009be21aa9'; 
     private static $_ch;
     public function __construct(string $apiKey = '')
     {
@@ -88,7 +88,7 @@ class YunPianSms
         //初始化client,apikey作为所有请求的默认值
         $clnt = YunpianClient::create($apikey);
         dump($clnt);exit;
-        $param = [YunpianClient::MOBILE => '18336344600',YunpianClient::TEXT => '【云片网】您的验证码是1234'];
+        $param = [YunpianClient::MOBILE => '18336344622',YunpianClient::TEXT => '【云片网】您的验证码是1234'];
         $r = $clnt->sms()->single_send($param);
         var_dump($r);
     }
