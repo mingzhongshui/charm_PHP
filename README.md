@@ -1,4 +1,4 @@
-# charm_pj
+# charm_PHP
 ## 介绍 ##
 一个简单的MVC框架，框架中实现了C和V层，M层使用composer的PHP组件——[Medoo](https://packagist.org/packages/catfan/medoo "medoo")，实现了一些简单的设计模式，单一入口、自动加载。
 
